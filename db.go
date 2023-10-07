@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
+	"log"
+	"os"
 )
 
 var schema = `
@@ -24,4 +26,12 @@ func newDB(server, dbName string) (*sqlx.DB, error) {
 	}
 	db.MustExec(schema)
 	return db, nil
+}
+
+func closeDb(db *sqlx.DB) {
+	err := db.Close()
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
 }

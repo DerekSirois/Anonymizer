@@ -13,6 +13,7 @@ func main() {
 
 	db, err := newDB(server, dbName)
 	handleErrors(err)
+	defer closeDb(db)
 
 	persons, err := getAllPerson(db)
 	handleErrors(err)
