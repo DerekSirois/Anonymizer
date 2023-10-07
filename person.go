@@ -8,9 +8,9 @@ import (
 )
 
 type Person struct {
-	firstname string    `db:"firstname"`
-	lastname  string    `db:"lastname"`
-	birthday  time.Time `db:"birthday"`
+	Firstname string    `db:"firstname"`
+	Lastname  string    `db:"lastname"`
+	Birthday  time.Time `db:"birthday"`
 }
 
 func getAllPerson(db *sqlx.DB) ([]*Person, error) {

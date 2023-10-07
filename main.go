@@ -19,7 +19,7 @@ func main() {
 	handleErrors(err)
 
 	for _, p := range persons {
-		fmt.Printf("firstname: %s, lastname: %s, birthday: %v", p.firstname, p.lastname, p.birthday)
+		fmt.Printf("firstname: %s, lastname: %s, birthday: %v", p.Firstname, p.Lastname, p.Birthday)
 	}
 }
 
