@@ -1,18 +1,21 @@
 package main
 
 import (
-	"gorm.io/gorm"
+	"github.com/jmoiron/sqlx"
 	"time"
+
+	_ "github.com/lib/pq"
 )
 
 type Person struct {
-	firstname string    `gorm:" column: firstname "`
-	lastname  string    `gorm:" column: lastname "`
-	birthday  time.Time `gorm:" column: birthday "`
+	id        int       `db:"id"`
+	firstname string    `db:"firstname"`
+	lastname  string    `db:"lastname"`
+	birthday  time.Time `db:"birthday"`
 }
 
-func getAllPerson(db *gorm.DB) ([]Person, error) {
-	var p []Person
-	result := db.Table("person").Find(&p)
-	return p, result.Error
+func getAllPerson(db *sqlx.DB) ([]*Person, error) {
+	p := make([]*Person, 0)
+	err := db.Select(&p, "SELECT * from person")
+	return p, err
 }
