@@ -3,6 +3,7 @@ module anonymizer
 go 1.21
 
 require (
+	github.com/brianvoe/gofakeit/v6 v6.23.2 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/pgx/v5 v5.3.1 // indirect

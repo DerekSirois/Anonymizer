@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/brianvoe/gofakeit/v6"
 	"log"
 	"os"
 )
@@ -19,8 +20,13 @@ func main() {
 	handleErrors(err)
 
 	for _, p := range persons {
-		fmt.Printf("firstname: %s, lastname: %s, birthday: %v", p.Firstname, p.Lastname, p.Birthday)
+		fmt.Printf("firstname: %s, lastname: %s, birthday: %v\n", p.Firstname, p.Lastname, p.Birthday)
+		err = gofakeit.Struct(p)
+		handleErrors(err)
+		err = p.update(db)
+		handleErrors(err)
 	}
+
 }
 
 func handleErrors(err error) {
