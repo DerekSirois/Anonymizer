@@ -8,14 +8,13 @@ import (
 )
 
 type Person struct {
-	id        int       `db:"id"`
 	firstname string    `db:"firstname"`
 	lastname  string    `db:"lastname"`
 	birthday  time.Time `db:"birthday"`
 }
 
 func getAllPerson(db *sqlx.DB) ([]*Person, error) {
-	p := make([]*Person, 0)
-	err := db.Select(&p, "SELECT * from person")
-	return p, err
+	var person []*Person
+	err := db.Select(&person, "SELECT firstname, lastname, birthday from person")
+	return person, err
 }
